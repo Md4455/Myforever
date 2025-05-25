@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Beloved Nihiya Maheen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --rose: #e84393;
+            --lavender: #a55eea;
+            --gold: #fdcb6e;
+            --light: #fff9fb;
+            --dark: #2d3436;
+            --shadow: 0 10px 30px rgba(232, 67, 147, 0.2);
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+        }
+        
+        /* Animated Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            z-index: -2;
+            opacity: 0.3;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating Hearts Background */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--rose);
+            animation: float 8s ease-in-out infinite;
+            opacity: 0;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+        
+        /* Header with Parallax Effect */
+        header {
+            background: linear-gradient(135deg, var(--rose), var(--lavender));
+            color: white;
+            text-align: center;
+            padding: 10rem 1rem;
+            position: relative;
+            overflow: hidden;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: -5rem;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.1;
+        }
+        
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            animation: fadeInDown 1.5s ease;
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Main Content Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        /* Memory Sections */
+        .memory {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 5rem 0;
+            box-shadow: var(--shadow);
+            transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(50px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards;
+        }
+        
+        .memory:nth-child(1) { animation-delay: 0.3s; }
+        .memory:nth-child(2) { animation-delay: 0.6s; }
+        .memory:nth-child(3) { animation-delay: 0.9s; }
+        .memory:nth-child(4) { animation-delay: 1.2s; }
+        
+        @keyframes fadeInUp {
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .memory:hover {
+            transform: translateY(-5px) !important;
+            box-shadow: 0 20px 50px rgba(232, 67, 147, 0.3);
+        }
+        
+        /* Photo Gallery */
+        .beauty-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .beauty-photo {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 400px;
+            box-shadow: var(--shadow);
+            transition: all 0.5s ease;
+        }
+        
+        .beauty-photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+        
+        .beauty-photo:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(232, 67, 147, 0.3);
+        }
+        
+        .beauty-photo:hover::before {
+            opacity: 1;
+        }
+        
+        .beauty-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .beauty-photo:hover img {
+            transform: scale(1.1);
+        }
+        
+        .beauty-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            z-index: 2;
+            transform: translateY(100%);
+            transition: transform 0.5s ease;
+        }
+        
+        .beauty-photo:hover .beauty-caption {
+            transform: translateY(0);
+        }
+        
+        /* Love Letter */
+        .love-letter {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .love-letter::before {
+            content: """;
+            font-size: 15rem;
+            color: rgba(232, 67, 147, 0.05);
+            position: absolute;
+            top: -3rem;
+            left: -1rem;
+            font-family: serif;
+            line-height: 1;
+            z-index: 0;
+        }
+        
+        .love-letter::after {
+            content: """;
+            font-size: 15rem;
+            color: rgba(232, 67, 147, 0.05);
+            position: absolute;
+            bottom: -8rem;
+            right: -1rem;
+            font-family: serif;
+            line-height: 1;
+            z-index: 0;
+        }
+        
+        .love-letter-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Interactive Elements */
+        .interactive-box {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .virtual-rose {
+            font-size: 4rem;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            display: inline-block;
+            color: #f8c4d8;
+            margin: 1rem 0;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .virtual-rose:hover {
+            color: var(--rose);
+            transform: scale(1.1) rotate(-10deg);
+            text-shadow: 0 10px 20px rgba(232, 67, 147, 0.4);
+        }
+        
+        .virtual-rose.bloom {
+            color: var(--rose);
+            animation: bloom 1.5s ease-in-out;
+        }
+        
+        @keyframes bloom {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.5) rotate(-15deg); }
+            100% { transform: scale(1.2) rotate(-10deg); }
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 6rem 1rem 4rem;
+            background: var(--dark);
+            color: white;
+            margin-top: 4rem;
+            position: relative;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: var(--light);
+            transform: skewY(-3deg);
+            transform-origin: top left;
+            z-index: 1;
+        }
+        
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 8rem 1rem;
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+            }
+            
+            .header-content h1 {
+                font-size: 3rem;
+            }
+            
+            .header-content p {
+                font-size: 1.8rem;
+            }
+            
+            .beauty-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .beauty-photo {
+                height: 350px;
+            }
+            
+            .memory {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="gradient-bg"></div>
+    <div class="floating-hearts" id="hearts-container"></div>
+    
+    <!-- Header with Updated Text -->
+    <header>
+        <div class="header-content">
+            <h1 style="font-size: 4rem; margin-bottom: 0.5rem;">My Love, My Life</h1>
+            <p style="font-size: 2.5rem; margin-top: 0;">My Nihiya Maheen</p>
+            <p style="font-size: 1.5rem; margin-top: 1rem;">Every beat of my heart whispers your name</p>
+        </div>
+    </header>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Our Story -->
+        <div class="memory">
+            <h2 style="font-size: 3rem; color: var(--rose); text-align: center; margin-bottom: 2rem;">For you My Sweetheart</h2>
+            <p style="font-size: 1.2rem; text-align: center; max-width: 800px; margin: 0 auto 2rem;">
+                My dearest <span style="color: var(--rose); font-family: 'Dancing Script', cursive;">Nihiya Maheen</span>, 
+                from the moment our paths crossed, my life transformed in ways I never imagined possible. 
+                I still remember when i saw you <strong>For the first time </strong> - your eyes your looks lit up the entire 
+                room and captured my heart instantly.
+            </p>
+            <div style="text-align: center;">
+                <div style="display: inline-block; background: rgba(232, 67, 147, 0.1); padding: 1.5rem 3rem; border-radius: 50px; margin-top: 1rem;">
+                    <p style="font-size: 1.1rem; margin: 0; font-style: italic;">
+                        "The way you <strong>hug me kiss me hold me</strong> makes me fall in love with you all over again"
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Photo Gallery with Local Images -->
+        <div class="memory">
+            <h2 style="font-size: 3rem; color: var(--lavender); text-align: center; margin-bottom: 2rem;">Your Timeless Beauty</h2>
+            <p style="text-align: center; font-size: 1.2rem; max-width: 700px; margin: 0 auto 3rem;">
+                These photographs capture moments I cherish, but no image could ever truly do justice to your radiant beauty.
+            </p>
+            
+            <div class="beauty-gallery">
+                <div class="beauty-photo">
+                    <img src="smile.jpg" alt="Your beautiful smile">
+                    <div class="beauty-caption">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Your Enchanting Smile</h3>
+                        <p style="margin: 0;">The smile that brightens my darkest days</p>
+                    </div>
+                </div>
+                
+                <div class="beauty-photo">
+                    <img src="eyes.jpg" alt="Your captivating eyes">
+                    <div class="beauty-caption">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Your Captivating Eyes</h3>
+                        <p style="margin: 0;">Eyes I could get lost in forever</p>
+                    </div>
+                </div>
+                
+                <div class="beauty-photo">
+                    <img src="grace.jpg" alt="Your graceful presence">
+                    <div class="beauty-caption">
+                        <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Your Graceful Presence</h3>
+                        <p style="margin: 0;">Elegance personified in every movement</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="interactive-box">
+                <h3 style="font-size: 2rem; color: var(--rose); margin-bottom: 1rem;">A Special Gift For You</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">Click on the rose to see a symbol of my growing love</p>
+                <div class="virtual-rose" id="virtualRose">
+                    <i class="fas fa-spa"></i>
+                </div>
+                <p id="roseMessage" style="margin-top: 1.5rem; font-size: 1.2rem; opacity: 0; transition: all 0.5s ease; color: var(--rose);">
+                    Like this rose, my love for you grows more beautiful with each passing day
+                </p>
+            </div>
+        </div>
+        
+        <!-- Love Letter -->
+        <div class="memory love-letter">
+            <div class="love-letter-content">
+                <h2 style="font-size: 3rem; color: var(--rose); text-align: center; margin-bottom: 2rem;">My Heart's Letter</h2>
+                <p style="font-size: 1.2rem; line-height: 1.8; max-width: 800px; margin: 0 auto;">
+                    My dearest Nihiya Maheen,<br><br>
+                    As I sit here thinking of you, my heart overflows with emotions that words can scarcely capture. 
+                    You are the most beautiful soul I've ever known - your kindness, your strength, your laughter 
+                    that lights up my world.<br><br>
+                    I remember the first time I saw you, how my breath caught in my chest. Little did I know that 
+                    moment would lead to this incredible love we share. you've made every moment magical.<br><br>
+                    What I love most is how you care about me think about me. The way you hold my hand the hugs the kisses makes me fall in 
+                    love with you all over again, every single day.<br><br>
+                    I promise to cherish you, to stand by you, to love you with every beat of my heart for all our 
+                    days. You are my greatest blessing, my beautiful Nihiya Maheen.
+                </p>
+                <p style="text-align: right; font-style: italic; font-size: 1.3rem; margin-top: 2rem; color: var(--rose);">
+                    Forever yours,<br>
+                    <span style="font-family: 'Dancing Script', cursive; font-size: 1.5rem;">Mubashir</span>
+                </p>
+            </div>
+        </div>
+        
+        <!-- Reasons I Love You -->
+        <div class="memory">
+            <h2 style="font-size: 3rem; color: var(--lavender); text-align: center; margin-bottom: 2rem;">Countless Reasons I Adore You</h2>
+            <p style="text-align: center; font-size: 1.2rem; max-width: 700px; margin: 0 auto 3rem;">
+                If I tried to list all the reasons I love you, we'd be here forever. But here are just a few:
+            </p>
+            
+            <div class="love-reasons" id="loveReasons">
+                <div class="reason">
+                    <h3 style="font-size: 1.5rem; color: var(--rose);">Your Radiant Smile</h3>
+                    <p>The way your eyes sparkle when you smile could brighten even my darkest days. It's my favorite sight in the world.</p>
+                </div>
+                <div class="reason">
+                    <h3 style="font-size: 1.5rem; color: var(--rose);">Your Compassionate Heart</h3>
+                    <p>You care so deeply for others - it's one of the first things that made me fall for you.</p>
+                </div>
+                <div class="reason">
+                    <h3 style="font-size: 1.5rem; color: var(--rose);">The Way You touch</h3>
+                    <p>I love how you touch me - it's uniquely you and endlessly endearing.</p>
+                </div>
+                <div class="reason">
+                    <h3 style="font-size: 1.5rem; color: var(--rose);">Your optimism patience Courage</h3>
+                    <p>Your optimism patience Courage leaves me in awe every single day.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <button class="special-btn" id="showMoreReasons">
+                    <i class="fas fa-heart" style="margin-right: 10px;"></i> Show Me More Reasons
+                </button>
+            </div>
+        </div>
+        
+        <!-- Promises -->
+        <div class="memory">
+            <h2 style="font-size: 3rem; color: var(--rose); text-align: center; margin-bottom: 2rem;">My Sacred Vows to You</h2>
+            <p style="text-align: center; font-size: 1.2rem; max-width: 700px; margin: 0 auto 3rem;">
+                Today and always, I solemnly promise:
+            </p>
+            
+            <div style="max-width: 600px; margin: 0 auto;">
+                <div style="display: flex; align-items: flex-start; margin-bottom: 1.5rem;">
+                    <div style="background: var(--rose); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; flex-shrink: 0;">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <p style="font-size: 1.1rem; margin: 0;">To love you unconditionally through all of life's seasons</p>
+                </div>
+                
+                <div style="display: flex; align-items: flex-start; margin-bottom: 1.5rem;">
+                    <div style="background: var(--rose); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; flex-shrink: 0;">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <p style="font-size: 1.1rem; margin: 0;">To be your partner in every adventure and challenge</p>
+                </div>
+                
+                <div style="display: flex; align-items: flex-start; margin-bottom: 1.5rem;">
+                    <div style="background: var(--rose); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; flex-shrink: 0;">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <p style="font-size: 1.1rem; margin: 0;">To listen with patience and an open heart</p>
+                </div>
+                
+                <div style="display: flex; align-items: flex-start;">
+                    <div style="background: var(--rose); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1.5rem; flex-shrink: 0;">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <p style="font-size: 1.1rem; margin: 0;">To support your dreams as fiercely as you've supported mine</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <h3 style="font-size: 2.5rem; margin-bottom: 1rem; color: white;">Forever Yours</h3>
+            <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">With all my love, today and always</p>
+            <p style="font-size: 1.5rem; margin-top: 2rem; font-family: 'Dancing Script', cursive;">Mubashir</p>
+            <p style="font-size: 1rem; margin-top: 0.5rem;"></p>
+        </div>
+    </footer>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const container = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            
+            // Random position
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = Math.random() * 100 + 'vh';
+            
+            // Random size
+            const size = Math.random() * 1.5 + 1;
+            heart.style.fontSize = size + 'rem';
+            
+            // Random animation duration
+            heart.style.animationDuration = Math.random() * 6 + 4 + 's';
+            
+            // Random color variation
+            const colors = ['#e84393', '#fd79a8', '#a55eea', '#d63031', '#fdcb6e'];
+            heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Random rotation
+            heart.style.transform = `rotate(${Math.random() * 360}deg)`;
+            
+            container.appendChild(heart);
+            
+            // Remove heart after animation completes
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+        
+        // Create hearts periodically
+        setInterval(createHearts, 300);
+        
+        // Create initial hearts
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createHearts, i * 200);
+        }
+        
+        // Virtual Rose Interaction
+        const virtualRose = document.getElementById('virtualRose');
+        const roseMessage = document.getElementById('roseMessage');
+        
+        virtualRose.addEventListener('click', function() {
+            // Bloom animation
+            this.classList.add('bloom');
+            
+            // Show message
+            roseMessage.style.opacity = '1';
+            roseMessage.style.transform = 'translateY(0)';
+            
+            // Create floating hearts around rose
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    createHeartAtPosition(
+                        virtualRose.getBoundingClientRect().left + 30,
+                        virtualRose.getBoundingClientRect().top + 30
+                    );
+                }, i * 100);
+            }
+            
+            // Reset after animation
+            setTimeout(() => {
+                this.classList.remove('bloom');
+            }, 1500);
+        });
+        
+        function createHeartAtPosition(x, y) {
+            const container = document.getElementById('hearts-container');
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.classList.add('heart');
+            heart.style.position = 'fixed';
+            heart.style.left = x + 'px';
+            heart.style.top = y + 'px';
+            heart.style.fontSize = '2rem';
+            heart.style.animation = 'float 4s ease-out forwards';
+            heart.style.color = '#e84393';
+            heart.style.zIndex = '1000';
+            heart.style.pointerEvents = 'none';
+            
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+        
+        // Show more reasons when button is clicked
+        document.getElementById('showMoreReasons').addEventListener('click', function() {
+            const reasonsContainer = document.getElementById('loveReasons');
+            const newReasons = [
+                {
+                    title: "Your Thoughtfulness",
+                    content: "You remember little details about me that even I forget - it shows how deeply you care."
+                },
+                {
+                    title: "Your Gazing",
+                    content: "The way you see me makes my heart skip a beat every time."
+                },
+                {
+                    title: "You Understand Me",
+                    content: "You know me better than I know myself - my perfect other half."
+                },
+                {
+                    title: "Your Strength",
+                    content: "The way you've overcome and handle the works responsibilities inspires me daily."
+                }
+            ];
+            
+            // Create new reason elements
+            newReasons.forEach(reason => {
+                const div = document.createElement('div');
+                div.classList.add('reason');
+                div.innerHTML = `
+                    <h3 style="font-size: 1.5rem; color: var(--rose);">${reason.title}</h3>
+                    <p>${reason.content}</p>
+                `;
+                div.style.opacity = '0';
+                div.style.transform = 'translateY(20px)';
+                div.style.transition = 'all 0.5s ease';
+                
+                reasonsContainer.appendChild(div);
+                
+                // Animate in
+                setTimeout(() => {
+                    div.style.opacity = '1';
+                    div.style.transform = 'translateY(0)';
+                }, 100);
+            });
+            
+            // Hide the button
+            this.style.display = 'none';
+            
+            // Create heart explosion effect
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    createHeartAtPosition(
+                        this.getBoundingClientRect().left + this.offsetWidth/2,
+                        this.getBoundingClientRect().top + this.offsetHeight/2
+                    );
+                }, i * 100);
+            }
+        });
+        
+        // Scroll animations
+        function checkScroll() {
+            document.querySelectorAll('.memory').forEach(memory => {
+                const memoryTop = memory.getBoundingClientRect().top;
+                if (memoryTop < window.innerHeight - 100) {
+                    memory.style.opacity = '1';
+                    memory.style.transform = 'translateY(0)';
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+        
+        // Typewriter effect for header
+        const headerText = document.querySelector('.header-content h1');
+        const originalText = headerText.textContent;
+        headerText.textContent = '';
+        
+        let i = 0;
+        const typeWriter = setInterval(() => {
+            if (i < originalText.length) {
+                headerText.textContent += originalText.charAt(i);
+                i++;
+            } else {
+                clearInterval(typeWriter);
+            }
+        }, 100);
+    </script>
+</body>
+</html>
